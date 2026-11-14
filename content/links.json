@@ -1,0 +1,30 @@
+{
+  "friends": [
+    {
+      "name": "h1LL.work",
+      "url": "https://h1ll.work/",
+      "description": {
+        "zh": " h1LL的网站，疑似圈钱",
+        "en": " h1LL's website,like a scam site(maybe"
+      }
+    }
+  ],
+  "elsewhere": [
+    {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com/",
+      "description": {
+        "zh": "每天都会看一会儿。",
+        "en": "A place I check most days."
+      }
+    },
+    {
+      "name": "Internet Archive",
+      "url": "https://archive.org/",
+      "description": {
+        "zh": "互联网应该被保存下来。",
+        "en": "The web should be kept."
+      }
+    }
+  ]
+}

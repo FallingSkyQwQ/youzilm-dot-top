@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>管理后台 · 柚子的 Blog</title><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/app.css"><script type="module" src="/app.js"></script></head>
+<body>
+<a class="skip" href="#main">跳到内容</a>
+<div id="login" class="login-wrap" hidden>
+  <form id="login-form" class="login-card">
+    <span class="eyebrow">YOUZILM / WORKSPACE</span><h1>你好，欢迎回来。</h1><p class="muted">写下新想法，照顾好你的博客。</p>
+    <label for="email">管理员邮箱</label><input id="email" name="email" type="email" autocomplete="username" required>
+    <label for="password">后台密码</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+    <p id="login-error" class="error" role="alert"></p><button class="primary" type="submit">进入后台 <span aria-hidden="true">→</span></button>
+  </form>
+</div>
+<div id="workspace" class="workspace" hidden>
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard"><span class="brand-icon">柚</span><span>柚子的 Blog<small>管理后台</small></span></a>
+    <p class="nav-label">内容管理</p>
+    <nav aria-label="后台导航">
+      <a href="#dashboard" data-section="dashboard">概览</a><a href="#articles" data-section="articles">文章</a><a href="#pages" data-section="pages">独立页面</a>
+      <a href="#tags" data-section="tags">标签</a><a href="#projects" data-section="projects">作品</a><a href="#links" data-section="links">友链</a><a href="#media" data-section="media">图片库</a>
+      <span class="nav-label">站点管理</span><a href="#site" data-section="site">站点信息</a><a href="#ui" data-section="ui">界面文案</a><a href="#comments" data-section="comments">评论</a><a href="#deployments" data-section="deployments">发布记录</a><a href="#settings" data-section="settings">连接与设置</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span> 独立管理工作区<button data-action="logout" class="link-button">退出登录</button></div>
+  </aside>
+  <div class="content-shell">
+    <header class="topbar"><span id="breadcrumb">概览</span><div class="top-actions"><span id="repo" class="repo"></span><button data-action="reload" class="secondary">刷新内容</button></div></header>
+    <main id="main" tabindex="-1"><div class="loading">正在连接你的博客…</div></main>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+<dialog id="modal" aria-labelledby="modal-title"><form id="modal-form"><div id="modal-content"></div><div class="dialog-actions"><button type="button" data-action="close-modal" class="secondary">取消</button><button id="modal-submit" type="submit" class="primary">确认</button></div></form></dialog>
+</body></html>

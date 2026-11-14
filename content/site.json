@@ -1,0 +1,33 @@
+{
+  "url": "https://youzilm.top",
+  "name": {
+    "zh": "柚子的blog",
+    "en": "youzilm's blog"
+  },
+  "author": {
+    "zh": "柚子味凉面",
+    "en": "youzilm"
+  },
+  "tagline": {
+    "zh": "Life is short.",
+    "en": "Life is short."
+  },
+  "description": {
+    "zh": "柚子的Blog：笔记、项目记录和一些随笔",
+    "en": "youzilm'blog — notes, projects, and everything else."
+  },
+  "bio": {
+    "zh": "柚子味凉面。这里放笔记、项目，以及一些没地方放的随笔。",
+    "en": "youzilm. Notes on software, projects, and whatever else needs a place."
+  },
+  "now": {
+    "zh": "写blog以及万恶的cpp",
+    "en": "working on this blog and cpp slops"
+  },
+  "github": "https://github.com/FallingSkyQwQ",
+  "x": "https://x.com/StewartCharlie_",
+  "walineUrl": "https://waline.youzilm.top",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "startYear": 2026
+}

@@ -1,0 +1,10 @@
+[
+  { "key": "programming", "zh": "编程", "en": "Programming" },
+  { "key": "reverse-engineering", "zh": "逆向", "en": "Reverse Engineering" },
+  { "key": "notes", "zh": "笔记", "en": "Notes" },
+  { "key": "essay", "zh": "随笔", "en": "Essays" },
+  { "key": "review", "zh": "评论", "en": "Reviews" },
+  { "key": "web", "zh": "Web", "en": "Web" },
+  { "key": "low-level", "zh": "底层", "en": "Low-level" },
+  { "key": "acg", "zh": "ACG", "en": "ACG" }
+]

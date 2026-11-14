@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-11-14T11:44:14.314Z",
+  "records": [
+    {
+      "id": "zh:page:about",
+      "kind": "page",
+      "lang": "zh",
+      "sourceLang": "zh",
+      "slug": "about",
+      "title": "关于",
+      "summary": "关于柚子味凉面和这个网站。",
+      "date": "2026-11-13",
+      "tags": [],
+      "content": "这是柚子的Blog.会写一些意义不明的随笔之类的... 最近在研究raylib由于我的英语水平一般,英语的版本可能会使用 LLM 进行翻译，见谅。关于这个网站部署在 CF worker 上，所以访问速度应该是没什么问题的 感谢 CloudFlare.版权本站文章均以 CC BY 4.0 授权。可以转载、改写、分享，注明作者和原链接即可。若某个项目或代码片段有自己的许可证，以项目内的许可证为准。如果你认为本站引用的图片、链接或文字侵犯了你的版权，请通过 X 的私信联系我删除。关于评论观点可以尖锐，但请对事不对人。垃圾广告和人身攻击会被清理。",
+      "url": "/about"
+    },
+    {
+      "id": "zh:page:now",
+      "kind": "page",
+      "lang": "zh",
+      "sourceLang": "zh",
+      "slug": "now",
+      "title": "现在",
+      "summary": "最近在做的事。",
+      "date": "2026-11-13",
+      "tags": [],
+      "content": "这个页面记录我最近在做的事，不定时更新。现在写这个blog研究研究 Raylib, 看看能不能搓个小游戏出来折腾一些 llm 全自动泔水生成器最近看过刘慈欣的《时间移民》这个页面/now 页面的想法来自 Derek Sivers。它比“关于”页更临时。",
+      "url": "/now"
+    },
+    {
+      "id": "en:page:about",
+      "kind": "page",
+      "lang": "en",
+      "sourceLang": "en",
+      "slug": "about",
+      "title": "About",
+      "summary": "About Yuzu-Flavored Cold Noodles and this website.",
+      "date": "2026-11-13",
+      "tags": [],
+      "content": "This is youzilm's Blog.writing some random stuffs with unclear meaning... Recently i've been studying raylib.my english isn't great, so the english version of articles may be translated using an LLM. PLEASE EXCUSE THAT.About This WebsiteIt's deployed on CF Workers, so access speed should be fine. Thanks CloudFlare.CopyrightAll articles on this site are licensed under CC BY 4.0. You may repost, adapt, and share them as long as you credit the author and link to the original.If a project or code snippet has its own license, the license within the project takes precedence.If you believe that images, links, or text referenced on this site infringe your copyright, please contact me via X DM to have them removed.About CommentsOpinions can be sharp, but please criticize the ideas, not the person. Spam and personal attacks will be removed.",
+      "url": "/en/about"
+    },
+    {
+      "id": "en:page:now",
+      "kind": "page",
+      "lang": "en",
+      "sourceLang": "en",
+      "slug": "now",
+      "title": "Now",
+      "summary": "What I am doing lately.",
+      "date": "2026-11-13",
+      "tags": [],
+      "content": "This page records what I am doing lately, updated irregularly.NowWriting this blogLooking into Raylib to see if I can cobble together a small gameTinkering with fully automatic LLM slop generatorsRecently readThe Time Migration by Liu CixinAbout this pageThe /now page is an idea from Derek Sivers. It is more temporary than an about page。",
+      "url": "/en/now"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "zh": {
+    "siteTagline": "Life is short.",
+    "siteDescription": "柚子的blog：笔记、项目和一些随笔",
+    "home": {
+      "tagline": "Life is short."
+    },
+    "links": {
+      "friendsEmpty": "欢迎通过 X 告诉我你的网站来交换友链。"
+    }
+  },
+  "en": {
+    "siteTagline": "Lise is short.",
+    "home": {
+      "tagline": "Life is short."
+    }
+  }
+}

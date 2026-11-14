@@ -1,0 +1,38 @@
+name: Deploy blog
+on:
+  push:
+    paths:
+      - 'content/**'
+      - 'public/**'
+      - 'src/**'
+      - 'scripts/build-content.mjs'
+      - 'scripts/deploy.mjs'
+      - 'package*.json'
+      - 'next.config.ts'
+      - 'open-next.config.ts'
+      - 'wrangler.jsonc'
+      - 'migrations/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: blog-production
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.ref_name == (vars.BLOG_BRANCH || 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
