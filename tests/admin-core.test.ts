@@ -20,6 +20,16 @@ test("GitHub rejects stale heads before creating any Git objects", async () => {
   await assert.rejects(() => github.save(head, [{ path: "content/posts/zh/test.md", content: document }], "save"), (e: unknown) => e instanceof HttpError && e.status === 409);
   assert.deepEqual(calls, ["GET"]);
 });
+
+test("GitHub calls the native fetch transport without binding it to the client instance", async () => {
+  const original = globalThis.fetch;
+  globalThis.fetch = async function (this: unknown) {
+    assert(this === undefined || this === globalThis, "native fetch receiver");
+    return Response.json({ object: { sha: head } });
+  };
+  try { assert.equal(await new GitHub(env).head(), head); }
+  finally { globalThis.fetch = original; }
+});
 test("GitHub rename creates one commit, preserves the base tree, and never force-pushes", async () => {
   const calls: { url: string; method: string; body: Record<string, unknown> }[] = [];
   const github = new GitHub(env, (async (url, options) => {
@@ -70,6 +80,20 @@ test("worker login requires the configured email and protects all content APIs",
   const throttled = { ...env, ADMIN_LOGIN_LIMITER: { limit: async () => ({ success: false }) } };
   const request = new Request("https://admin.example.com/api/login", { method: "POST", headers: { origin: "https://admin.example.com", "content-type": "application/json" }, body: "{}" });
   assert.equal((await worker.fetch(request, throttled)).status, 429);
+});
+
+test("Markdown previews preserve math and remove raw HTML and executable link protocols", async () => {
+  const session = await signSession({ kind: "admin", csrf: "csrf", expires: Date.now() + 60000 }, env.ADMIN_SESSION_SECRET);
+  const response = await worker.fetch(new Request("https://admin.example.com/api/preview", {
+    method: "POST", headers: { cookie: "blog_admin=" + session, origin: "https://admin.example.com", "x-csrf-token": "csrf", "content-type": "application/json" },
+    body: JSON.stringify({ markdown: '$$x^2$$\n\n<script>alert(1)</script>\n\n[bad](javascript:alert(1))\n\n[entity](jav&#x61;script:alert(1))\n\n[good](https://example.com)\n\n![image](/images/test.png)' }),
+  }), env);
+  assert.equal(response.status, 200);
+  const { html } = await response.json() as { html: string };
+  assert(html.includes("katex")); assert(!html.includes("<script"));
+  assert(!html.includes('href="javascript:'));
+  assert(html.includes('href="https://example.com"'));
+  assert(html.includes('src="/images/test.png"'));
 });
 test("reading progress measures body length, including the final section", () => {
   assert.equal(readingProgress(100, 2000, 800), 0);

@@ -8,6 +8,6 @@ if (!["dev", "build", "deploy"].includes(command)) throw new Error("Use dev, bui
 await import("./build-admin-assets.mjs");
 const args = command === "dev"
   ? ["dev", "--config", "admin/wrangler.jsonc", "--port", "8788"]
-  : ["deploy", "--config", "admin/wrangler.jsonc", ...(command === "build" ? ["--dry-run", "--outdir", "admin/.build"] : [])];
+  : ["deploy", "--config", "admin/wrangler.jsonc", ...(command === "build" ? ["--dry-run", "--outdir", path.join(process.cwd(), "admin", ".build")] : [])];
 const result = spawnSync(process.execPath, [path.join(process.cwd(), "node_modules/wrangler/bin/wrangler.js"), ...args], { stdio: "inherit" });
 process.exitCode = result.status ?? 1;

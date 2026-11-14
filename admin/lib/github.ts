@@ -4,7 +4,8 @@ export type TreeEntry = { path: string; sha: string; type: string; mode: string;
 export type Snapshot = { head: string; files: Record<string, { sha: string; content: string }>; images: TreeEntry[] };
 export type Change = { path: string; content: string | null; encoding?: "base64" };
 export class GitHub {
-  constructor(private env: Env, private fetcher: typeof fetch = fetch) {}
+  // Workers' native fetch must be called on the global scope, not on this instance.
+  constructor(private env: Env, private fetcher: typeof fetch = (...args) => fetch(...args)) {}
   async request<T>(route: string, method = "GET", body?: unknown): Promise<T> {
     if (!this.env.GITHUB_TOKEN || !this.env.GITHUB_OWNER || !this.env.GITHUB_REPO) throw new HttpError(503, "请先配置 GitHub 仓库和 GITHUB_TOKEN。");
     const base = "https://api.github.com/repos/" + encodeURIComponent(this.env.GITHUB_OWNER) + "/" + encodeURIComponent(this.env.GITHUB_REPO);

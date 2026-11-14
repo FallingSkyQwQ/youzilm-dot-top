@@ -22,6 +22,7 @@ TUI 源码、入口、依赖及二进制构建脚本已移除。CLI 保留，供
 
 仓库、分支、管理员邮箱与评论服务地址在 [wrangler.jsonc](./wrangler.jsonc) 中。
 管理员邮箱为 `charlie.0111@foxmail.com`，也是内容提交署名邮箱。
+当前后台地址：[youzilm-blog-admin.wc431515.workers.dev](https://youzilm-blog-admin.wc431515.workers.dev)。
 后台默认使用独立 Worker 的 workers.dev 地址；自定义域名可在 Cloudflare Worker 中添加。
 
 生产环境需要设置三个 Worker secrets：
@@ -69,6 +70,7 @@ Worker secrets 仍通过上面的 `wrangler secret put` 设置；Actions 不会�
 或同步修改后台的 `DEPLOY_WORKFLOW`。
 
 GitHub token 保存内容触发 push 工作流；Actions 读写权限用于查看状态及手动触发发布。
+当前部署通过 `gh auth token` 复用本机 GitHub CLI 授权，并将令牌存为 Worker secret。
 受保护分支需要允许该管理员令牌提交，否则后台会报告失败并保留本机草稿。
 GitHub Actions 发布主站与后台，不会自动发布 Waline 服务；修改评论服务后，按其 README 单独部署。
 

@@ -9,6 +9,21 @@ import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
 import rehypeStringify from "rehype-stringify";
+import { visit } from "unist-util-visit";
+import type { Root } from "hast";
+
+function previewUrls() {
+  return (tree: Root) => visit(tree, "element", node => {
+    for (const attribute of ["href", "src"]) {
+      const value = node.properties[attribute];
+      if (typeof value !== "string") continue;
+      try {
+        const protocol = new URL(value, "https://preview.invalid/").protocol;
+        if (!["https:", "http:", ...(attribute === "href" ? ["mailto:"] : [])].includes(protocol)) delete node.properties[attribute];
+      } catch { delete node.properties[attribute]; }
+    }
+  });
+}
 
 function json(value: unknown, status = 200, headers: Record<string, string> = {}) {
   return new Response(JSON.stringify(value), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", ...headers } });
@@ -144,7 +159,7 @@ async function handle(request: Request, env: Env): Promise<Response> {
     const data = await body(request);
     if (typeof data.markdown !== "string" || data.markdown.length > 256000) throw new HttpError(400, "预览内容过大。");
     const html = await unified().use(remarkParse).use(remarkGfm).use(remarkMath).use(remarkRehype)
-      .use(rehypeKatex, { strict: false }).use(rehypeStringify).process(data.markdown);
+      .use(rehypeKatex, { strict: false }).use(previewUrls).use(rehypeStringify).process(data.markdown);
     return json({ html: String(html) });
   }
   if (route === "/api/deployments" && request.method === "GET") return json(await github.deployments());
@@ -181,7 +196,8 @@ const adminWorker = {
     try { return await handle(request, env); }
     catch (error) {
       if (error instanceof HttpError) return json({ error: error.message }, error.status);
-      console.error("Admin request failed:", error instanceof Error ? error.name : "Unknown");
+      // Keep diagnostics useful without logging request bodies, credentials or upstream messages.
+      console.error("Admin request failed:", error instanceof Error ? { name: error.name, stack: error.stack?.split("\n").slice(1).join("\n") } : "Unknown");
       return json({ error: "后台请求失败，请稍后重试。" }, 500);
     }
   },
