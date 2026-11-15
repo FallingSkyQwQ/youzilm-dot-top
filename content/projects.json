@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "slug": "aequor",
+    "title": "Aequor",
+    "year": "2026",
+    "description": {
+      "zh": "为低配开发板设计的 Linux 发行版，基于 Void Linux",
+      "en": "Linux distro designed for entry-level development board,based on Void Linux"
+    },
+    "tech": [
+      "my own mind"
+    ],
+    "links": [
+      {
+        "label": "Aequor",
+        "url": "https://aequor.youzilm.top/"
+      }
+    ]
+  }
+]
