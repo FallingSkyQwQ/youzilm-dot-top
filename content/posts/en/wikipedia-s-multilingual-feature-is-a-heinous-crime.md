@@ -4,11 +4,11 @@ date: 2026-11-21
 tags:
   - essay
   - notes
-draft: true
-summary: 在 Wikipedia 找词条时总被跳转到文言、吴语等冷门语言版本，页面看不懂还得手动切换。多语言本是好事，但被滥用就成了灾难。
+draft: false
+summary: |
+  When I look up entries on Wikipedia, I keep getting redirected to obscure language versions like Classical Chinese or Wu Chinese. I can’t understand the page and have to switch languages manually. Multilingual support is a good thing in itself, but when it’s abused, it becomes a disaster.
 ---
 
-# Wikipedia’s Multilingual Feature Is a Heinous Crime
 These past couple of days I’ve been trying to find a good name for something I’m making, so I searched Google for names of various things and jumped to Wikipedia to browse entries (a very weird way to name things).
 
 What made me lose my mind was that I landed on a page that felt completely unfamiliar. It wasn’t Wikipedia’s default white-background page, but a beige-background page. 
